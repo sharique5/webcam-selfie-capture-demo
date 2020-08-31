@@ -27,14 +27,38 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+      <ul>
+          <li><video id="video" width="720" height="560" autoplay muted></video></li>
+          <li><button @click="takePic">Take Pic</button></li>
+          <li><canvas id="captured"></canvas></li>
+      </ul>
   </div>
 </template>
 
 <script>
+import webCam from 'webcam-selfie-capture';
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data: function() {
+	return {webCamInstance: null}
+  },
+  mounted() {
+   let self = this
+    self.webCamInstance = webCam
+    self.webCamInstance.webcamSelfieCapture.setVideoElementId('video')
+    self.webCamInstance.webcamSelfieCapture.setVideoElementEventListener()
+    self.webCamInstance.webcamSelfieCapture.loadModels()
+    self.webCamInstance.webcamSelfieCapture.startVideo()
+  },
+  methods: {
+    takePic() {
+      let self = this
+      self.webCamInstance.webcamSelfieCapture.captureSelfie('captured')
+    }
   }
 }
 </script>
