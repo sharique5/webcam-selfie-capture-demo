@@ -84,18 +84,24 @@ export default {
     }
     .footer,
     .header {
-        background: green;
         height: 10vh;
         width: 100vw;
 
         .v-card {
-            background: yellow;
+            background: #292929;
+            color: #E2E2E2;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 32px;
             font-weight: 900;
+
+            .v-card__actions {
+                .v-btn {
+                    background: #131313 !important;
+                }
+            }
         }
     }
     .content {
@@ -104,13 +110,10 @@ export default {
         .v-card {
             height: 80%;
             width: 80%;
-        }
-
-        .webcam-container {
-            background: green;
-        }
-        .selfie-container {
-            background: aliceblue;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .selfie-container,
@@ -118,7 +121,15 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid #abc123;
+            border: 2px solid #131313;
+            background: #292929;
+
+            .v-card {
+                background: #131313;
+                .v-card__title {
+                    color: #979797;
+                }
+            }
         }
     }
 </style>
